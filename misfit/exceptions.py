@@ -53,6 +53,7 @@ class MisfitHttpException(MisfitException):
             429: MisfitRateLimitError,
             500: MisfitUnknownError,
             502: MisfitBadGateway,
+            503: MisfitDownException,
             504: MisfitTimeoutException,
         }
         raise exceptions[code](code, message, getattr(exc, 'response', None))
@@ -86,4 +87,7 @@ class MisfitUnknownError(MisfitHttpException):
     pass
 
 class MisfitTimeoutException(MisfitHttpException):
+    pass
+
+class MisfitDownException(MisfitHttpException):
     pass
